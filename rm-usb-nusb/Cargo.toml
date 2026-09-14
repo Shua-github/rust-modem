@@ -1,0 +1,21 @@
+[package]
+name = "rm-usb-nusb"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+description = "nusb-backed USB backend implementing the rm-usb-core traits on Linux, Windows and macOS."
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme.workspace = true
+keywords = ["usb", "nusb", "modem", "async", "backend"]
+categories = ["hardware-support", "no-std"]
+
+[dependencies]
+futures = { workspace = true }
+futures-timer = "3.0.4"
+nusb = { version = "0.2.7", features = ["smol"] }
+rm-usb-core = { workspace = true }
+thiserror = { workspace = true }

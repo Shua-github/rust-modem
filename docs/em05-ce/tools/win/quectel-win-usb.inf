@@ -1,0 +1,35 @@
+[Version]
+Signature           = "$Windows NT$"
+Class               = USBDevice
+ClassGuid           = {88BAE032-5A81-49f0-BC3D-A4FF138216D6}
+Provider            = %ProviderName%
+DriverVer           = 09/12/2026,1.0.0.0
+CatalogFile         = quectel-win-usb.cat
+
+[Manufacturer]
+%ProviderName%      = Standard, NTamd64
+
+; 模组各功能接口：AT/GNSS、MBIM 控制、QMI（按 AT+QCFG="usbnet" 切换后出现）。
+; 只绑需要的那个接口，用 install-win-usb.ps1 -HardwareId 指定。
+[Standard.NTamd64]
+%DeviceName%        = USB_Install, USB\VID_2C7C&PID_0127&MI_00
+%DeviceName%        = USB_Install, USB\VID_2C7C&PID_0127&MI_01
+%DeviceName%        = USB_Install, USB\VID_2C7C&PID_0127&MI_06
+
+[USB_Install]
+Include             = winusb.inf
+Needs               = WINUSB.NT
+
+[USB_Install.Services]
+Include             = winusb.inf
+Needs               = WINUSB.NT.Services
+
+[USB_Install.HW]
+AddReg              = AddDeviceInterfaceGUIDs
+
+[AddDeviceInterfaceGUIDs]
+HKR,,DeviceInterfaceGUIDs,0x10000,"{a5dcbf10-6530-11d2-901f-00c04fb951ed}"
+
+[Strings]
+ProviderName        = "Temporary WinUSB binding"
+DeviceName          = "Quectel modem interface (WinUSB)"

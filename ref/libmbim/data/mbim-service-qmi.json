@@ -1,0 +1,25 @@
+
+[
+  // *********************************************************************************
+  { "type" : "Service",
+    "name" : "QMI" },
+
+  // *********************************************************************************
+  { "name"         : "msg",
+    "type"         : "Command",
+    "since-ex"     : { "set"          : "1.14",
+                       "response"     : "1.14",
+                       "notification" : "1.18" },
+    "set"          : [ { "name"          : "QmiMsg",
+                         "format"        : "unsized-byte-array",
+                         "pad-array"     : "FALSE",
+                         "personal-info" : "true" } ],
+    "response"     : [ { "name"          : "QMUX",
+                         "format"        : "unsized-byte-array",
+                         "pad-array"     : "FALSE",
+                         "personal-info" : "true"} ],
+    "notification" : [ { "name"          : "QMUX",
+                         "format"        : "unsized-byte-array",
+                         "pad-array"     : "FALSE",
+                         "personal-info" : "true"} ]}
+]

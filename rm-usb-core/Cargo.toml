@@ -1,0 +1,21 @@
+[package]
+name = "rm-usb-core"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+description = "Transport-agnostic USB client abstractions for modem stacks: device filters, control setup packets and transfers."
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme.workspace = true
+keywords = ["usb", "no-std", "modem", "webusb", "traits"]
+categories = ["hardware-support", "no-std", "api-bindings"]
+
+[dependencies]
+thiserror = { workspace = true }
+trait-variant = { workspace = true }
+
+[dev-dependencies]
+futures = { workspace = true, features = ["executor"] }

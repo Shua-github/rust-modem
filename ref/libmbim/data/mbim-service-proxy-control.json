@@ -1,0 +1,25 @@
+
+[
+  // *********************************************************************************
+  { "type" : "Service",
+    "name" : "Proxy Control" },
+
+  // *********************************************************************************
+  { "name"     : "Configuration",
+    "type"     : "Command",
+    "since"    : "1.10",
+    "set"      : [ { "name"   : "DevicePath",
+                     "format" : "string" },
+                   { "name"   : "Timeout",
+                     "format" : "guint32" } ],
+    "response" : [] },
+
+  // *********************************************************************************
+  { "name"         : "Version",
+    "type"         : "Command",
+    "since"        : "1.28",
+    "notification" : [ { "name"   : "MbimVersion",
+			 "format" : "guint16" },
+		       { "name"   : "MbimExtendedVersion",
+			 "format" : "guint16" } ] }
+]

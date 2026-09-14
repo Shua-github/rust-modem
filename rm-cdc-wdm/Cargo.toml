@@ -1,0 +1,21 @@
+[package]
+name = "rm-cdc-wdm"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+description = "CDC WDM (WMC) control channel over USB class-specific requests, modelled after the Linux cdc-wdm driver."
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme.workspace = true
+keywords = ["usb", "cdc", "wdm", "modem", "no-std"]
+categories = ["hardware-support", "no-std"]
+
+[dependencies]
+rm-usb-core = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+futures = { workspace = true, features = ["executor"] }

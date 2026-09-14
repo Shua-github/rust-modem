@@ -1,0 +1,51 @@
+[package]
+name = "rm-qmi"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+description = "QMI codec and client for cellular modems, generated from the libqmi service database."
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme.workspace = true
+keywords = ["qmi", "modem", "usb", "no-std", "cellular"]
+categories = ["hardware-support", "no-std", "network-programming"]
+
+[dependencies]
+libc = { version = "0.2", default-features = false, optional = true }
+rm-cdc-wdm = { workspace = true, optional = true }
+rm-client-core = { workspace = true }
+rm-usb-core = { workspace = true, optional = true }
+trait-variant = { workspace = true }
+thiserror = { workspace = true }
+hex = { workspace = true }
+
+[features]
+# QMI over USB: a CDC WDM function, the device table that says which modems
+# carry one, and the client that claims it. Nothing of it is pulled in unless
+# it is asked for.
+usb = ["dep:rm-cdc-wdm", "dep:rm-usb-core"]
+
+# QMI over QRTR, the modem's internal bus, which needs no USB at all. The
+# socket underneath can be supplied by whoever asked for it, so this brings in
+# no USB and, on a platform that has no bus of its own, no socket either.
+qrtr = ["dep:libc"]
+
+[dev-dependencies]
+serde_json = { workspace = true }
+rm-usb-nusb = { workspace = true }
+futures = { workspace = true, features = ["executor"] }
+
+[[example]]
+name = "qrtr_uim_state"
+required-features = ["qrtr"]
+
+[[example]]
+name = "get_eid"
+required-features = ["usb"]
+
+[[example]]
+name = "qmi_uim_state"
+required-features = ["usb"]

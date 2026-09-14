@@ -1,0 +1,39 @@
+[package]
+name = "rm-usb-webusb"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+description = "WebUSB backend implementing the rm-usb-core traits in wasm32 browsers."
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme.workspace = true
+keywords = ["usb", "webusb", "wasm", "modem", "backend"]
+categories = ["hardware-support", "wasm", "no-std"]
+
+[dependencies]
+js-sys = "0.3"
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4"
+web-sys = { version = "0.3", features = [
+    "UsbAlternateInterface",
+    "Navigator",
+    "Usb",
+    "UsbConfiguration",
+    "UsbControlTransferParameters",
+    "UsbDevice",
+    "UsbDirection",
+    "UsbDeviceFilter",
+    "UsbDeviceRequestOptions",
+    "UsbInterface",
+    "UsbInTransferResult",
+    "UsbOutTransferResult",
+    "UsbRecipient",
+    "UsbRequestType",
+    "UsbTransferStatus",
+    "Window",
+] }
+rm-usb-core = { workspace = true }
+thiserror = { workspace = true }

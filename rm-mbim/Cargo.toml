@@ -1,0 +1,25 @@
+[package]
+name = "rm-mbim"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+description = "MBIM codec and client for cellular modems, generated from the libmbim service database."
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme.workspace = true
+keywords = ["mbim", "modem", "usb", "no-std", "cellular"]
+categories = ["hardware-support", "no-std", "network-programming"]
+
+[dependencies]
+rm-cdc-wdm = { workspace = true }
+rm-client-core = { workspace = true }
+rm-usb-core = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+serde_json = { workspace = true }
+rm-usb-nusb = { workspace = true }
+futures = { workspace = true, features = ["executor"] }

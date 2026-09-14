@@ -1,0 +1,68 @@
+#!/usr/bin/env python3
+# -*- Mode: python; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
+#
+# SPDX-License-Identifier: LGPL-2.1-or-later
+#
+# Copyright (C) 2013-2018 Aleksander Morgado <aleksander@gnu.org>
+#
+
+import os
+import sys
+import optparse
+import json
+
+from ObjectList import ObjectList
+import utils
+
+def codegen_main():
+    # Input arguments
+    arg_parser = optparse.OptionParser('%prog [options]')
+    arg_parser.add_option('', '--output', metavar='OUTFILES',
+                          help='Generate C code in OUTFILES.[ch]')
+    (opts, args) = arg_parser.parse_args();
+
+    if args == None:
+        raise RuntimeError('Input JSON file is mandatory')
+    if opts.output == None:
+        raise RuntimeError('Output file pattern is mandatory')
+
+    # Prepare output file names
+    output_file_c = open(opts.output + ".c", 'w')
+    output_file_h = open(opts.output + ".h", 'w')
+    output_file_sections = open(opts.output + ".sections", 'w')
+
+    # Build message list from all input files
+    object_list_json = []
+    for input_file in args:
+        database_file_contents = utils.read_json_file(input_file)
+        object_list_json += json.loads(database_file_contents)
+    object_list = ObjectList(object_list_json)
+
+    # Add common stuff to the output files
+    utils.add_copyright(output_file_c);
+    utils.add_copyright(output_file_h);
+    utils.add_header_start(output_file_h, os.path.basename(opts.output))
+    utils.add_source_start(output_file_c, os.path.basename(opts.output))
+    for input_file in args:
+        utils.add_header_sections(output_file_h, os.path.splitext(os.path.basename(input_file))[0])
+
+    # Emit the message creation/parsing code
+    object_list.emit(output_file_h, output_file_c)
+
+    # Emit the message printable support
+    object_list.emit_printable(output_file_h, output_file_c)
+
+    # Emit sections
+    object_list.emit_sections(output_file_sections)
+
+    utils.add_header_stop(output_file_h, os.path.basename(opts.output))
+
+    output_file_c.close()
+    output_file_h.close()
+    output_file_sections.close()
+
+    sys.exit(0)
+
+
+if __name__ == "__main__":
+    codegen_main()

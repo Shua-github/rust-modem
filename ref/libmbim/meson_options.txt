@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2021 Iñigo Martinez <inigomartinez@gmail.com>
+
+option('mbim_username', type: 'string', value: '', description: 'user allowed to access MBIM devices')
+
+option('mbim_groupname', type: 'string', value: '', description: 'group allowed to access MBIM devices')
+
+option('udevdir', type: 'string', value: '', description: 'where udev base directory is')
+
+option('introspection', type: 'boolean', value: true, description: 'build introspection support')
+option('gtk_doc', type: 'boolean', value: false, description: 'use gtk-doc to build documentation')
+option('man', type: 'boolean', value: true, description: 'build man pages using help2man')
+
+option('bash_completion', type: 'boolean', value: true, description: 'install bash completion files')
+
+option('fuzzer', type: 'boolean', value: false, description: 'build fuzzer tests')

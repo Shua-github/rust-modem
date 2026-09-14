@@ -1,0 +1,6 @@
+[alias]
+xtask = "run -p xtask --"
+
+# The WebUSB bindings in web-sys are gated behind this cfg.
+[target.wasm32-unknown-unknown]
+rustflags = ["--cfg=web_sys_unstable_apis"]

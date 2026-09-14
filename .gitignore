@@ -1,0 +1,9 @@
+/target/
+/output/
+/web/pkg/
+.claude/*
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.rs.bk
+**/**/__pycache__/

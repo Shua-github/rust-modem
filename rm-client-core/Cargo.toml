@@ -1,0 +1,22 @@
+[package]
+name = "rm-client-core"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+description = "Protocol-independent modem client traits shared by rm-qmi and rm-mbim."
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme.workspace = true
+keywords = ["modem", "uim", "esim", "no-std", "traits"]
+categories = ["hardware-support", "no-std"]
+
+[lib]
+name = "rm_client_core"
+path = "src/lib.rs"
+
+[dependencies]
+serde = { version = "1", default-features = false, features = ["derive", "alloc"] }
+trait-variant = { workspace = true }

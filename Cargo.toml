@@ -1,0 +1,38 @@
+[workspace]
+resolver = "3"
+members = [
+    "rm-cdc-wdm",
+    "rm-client-core",
+    "rm-mbim",
+    "rm-qmi",
+    "rm-usb-core",
+    "rm-usb-nusb",
+    "rm-usb-webusb",
+    "xtask",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.87"
+authors = ["Shua-github <CHA_shua@outlook.com>"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/Shua-github/rust-modem"
+homepage = "https://github.com/Shua-github/rust-modem"
+readme = "README.md"
+
+[workspace.dependencies]
+futures = { version = "0.3", default-features = false }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", default-features = false, features = ["alloc"] }
+trait-variant = "0.1"
+thiserror = { version = "2", default-features = false }
+hex = { version = "0.4", default-features = false, features = ["alloc"] }
+
+rm-cdc-wdm = { version = "0.1.0", path = "rm-cdc-wdm" }
+rm-client-core = { version = "0.1.0", path = "rm-client-core" }
+rm-mbim = { version = "0.1.0", path = "rm-mbim" }
+rm-qmi = { version = "0.1.0", path = "rm-qmi" }
+rm-usb-core = { version = "0.1.0", path = "rm-usb-core" }
+rm-usb-nusb = { version = "0.1.0", path = "rm-usb-nusb" }
+rm-usb-webusb = { version = "0.1.0", path = "rm-usb-webusb" }

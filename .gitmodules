@@ -1,0 +1,6 @@
+[submodule "ref/libmbim"]
+	path = ref/libmbim
+	url = https://github.com/linux-mobile-broadband/libmbim
+[submodule "ref/libqmi"]
+	path = ref/libqmi
+	url = https://github.com/linux-mobile-broadband/libqmi
